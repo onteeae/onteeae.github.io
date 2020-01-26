@@ -1,7 +1,7 @@
 ---
 title: "Arcitectur Styles and the Design of Network-based Software Architectures"
 date: 2020-01-24 20:00:00 -0400
-categories: Translation
+categories: [Translation]
 ---
 이 글은 Roy Fielding의 논문 <Architecture Styles and the Design of Network-based Software Architectures>을 번역, 요약한 글이다.
 

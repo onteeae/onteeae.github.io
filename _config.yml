@@ -109,13 +109,10 @@ analytics:
 author:
   name             : "\"Jay\" JaeYoon Lee"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Full-Stack Software Developer. Currently Working For Naver Webtoon Corp."
+  bio              : "Server Developer. Currently Working For Naver Webtoon Corp."
   location         : "Seoul, Korea"
   email            : "onteeae@naver.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:onteeae@naver.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://onteeae.github.io"
