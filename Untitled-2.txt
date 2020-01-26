@@ -1,0 +1,79 @@
+## String vs StringBuilder vs StringBuffer
+* Java의 String, Wrapper Type(Integer ...)들은 Immutable Object이다.(Immutable(<-> Mutable)이란, 생성후에는 객체의 internal state가 바뀔 수 없다는 속성)
+   * Java에서는 이를 위해 final keyword가 존재하고, Immutable Object는 thread safe하고 reference로 인한 side-effect가 적다. [참고](https://www.artima.com/intv/gosling3.html#part13) [참고2](https://www.baeldung.com/java-string-immutable)
+   * 특히 String은 여러 String Object가 같은 final char[]을 참조하도록 하여 메모리를 절약하고, 또 Caching되는 효과도 있음
+```java
+public final class String
+    implements java.io.Serializable, Comparable<String>, CharSequence {
+    /** The value is used for character storage. */
+    private final char value[];
+```
+* String과 StringBuilder/StringBuffer의 차이는 바로 Immutability로 부터 온다. value[]가 final이기 때문에,
+"ab" + "cd" + "ef" 의 연산을 위해서는 각각의 String Literal 외에 "abcd", "abcdef"를 위한 Heap의 할당이 필요하다. -> 따라서 더욱 Time/Space inefficient
+
+* 반면에, StringBuilder/Buffer extends AbstractStringBuilder는 다음과 같음
+```java
+abstract class AbstractStringBuilder implements Appendable, CharSequence {
+    /**
+     * The value is used for character storage.
+     */
+    char[] value;
+
+    /**
+     * The count is the number of characters used.
+     */
+    int count;
+```
+* Immutable 하지 않기 때문에, append 연산에서 추가적인 heap allocation을 필요로 하지 않음.
+* StringBuffer
+```java
+    @Override
+    public synchronized StringBuffer append(Object obj) {
+        toStringCache = null;
+        super.append(String.valueOf(obj));
+        return this;
+    }
+```
+* StringBuilder
+```sql
+    @Override
+    public StringBuilder append(Object obj) {
+        return append(String.valueOf(obj));
+    }
+
+    @Override
+    public StringBuilder append(String str) {
+        super.append(str);
+        return this;
+    }
+```
+* StringBuffer Class는 synchronized 되어있어 thread-safe
+
+2. 가상 주소 -> 컴.구 강의자료 드리기
+3. 왜 Thread 간에는 Memory Safe 이야기를 하는데, Process 간에는 하지 않는가.
+4. Floating Point Deep dive
+5. Isolation Propagation 상세정리 해드리기
+6. HA
+7. 복제지연
+8. 스프링의 트랜잭션 매니저와 DB 트랜잭션
+9. Java Stream
+10. Java 8에서 달라진 것 세 가지
+11. Design Pattern
+12. 객체지향 4 특성 5원칙
+13. 디자인패턴이란?
+14. Restful Architecture
+15. String Pool
+1. Library vs Framework
+2. Scale Up과 Scale Out란?
+3. 다중화를 위한 서버 아키텍처
+4. HTTP 특징 (stateless, connection-less??)
+5. Java 메모리구조
+6. 프로세스랑 쓰레드는 무엇이 다른가
+7. 스프링의 IoC, DI?
+8. 디자인패턴
+
+
+For me
+Node.js
+Vue 아키텍쳐
+Master 이중화
