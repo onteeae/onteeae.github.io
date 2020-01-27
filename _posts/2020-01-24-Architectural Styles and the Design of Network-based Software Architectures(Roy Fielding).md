@@ -95,3 +95,39 @@ Latency : 레이턴시는 첫 입력과 첫 응답 사이의 간격
 Completion : 어플리케이션 Action을 완성하는데 드는 시간.
 중요한 점은 보통 Latency를 최적화 하면 Completion Time을 악화시킴.
 2.3.1.3 Network Efficiency
+흥미로운 관찰은 네트워크 기반의 어플리케이션은 네트워크를 사용하지 않음으로써 최적의 성능을 얻을 수 있다는 것
+이전의 결과를 재사용하거나(캐싱), 유저 액션에 따른 네트워크 사용을 줄이거나(복제 데이터, disconnected operation) 혹은 data process 자체를 전달 함으로써(mobile code) 이루어짐
+또 성능이 어플리케이션의 Scope에 영향을 받기도 하는데, 로컬 환경에서의 장점은 글로벌 환경에서 단점이 될 수도 있다.
+따라서 이러한 고려가 필요함.
+2.3.2 Scalability
+Active Configuration에서 많은 수의 Component와 Interaction을 수행할 수 있는 능력.
+2.3.3 Simplicity
+Simplicity는 Component안에서 기능의 할당에서 Separation of Concern Principle을 적용하여 얻어낼 수 있다.
+이 논문에선 복잡도, 이해가능성, 그리고 검증가능성을 Simplicity안에서 같이 볼 것인데, 네트워크 기반의 시스템에서는 모두 같이 오기때문이다.
+2.3.4 Modifiability
+Modifiability는 어플리케이션 아키텍처가 변하기 쉬운 정도이다.
+이는 Evolvability, Extensibility, Customizability, Configurability, Reusability로 나누어진다.
+특히, Dynamic Modifiability는 배포된 어플리케이션이 전체 시스템을 중지한 후에 재시작 하지 않고도 변경될 수 있다는 것을 의미함.
+2.3.4.1 Evolvability
+Componente 구현이 다른 Component에 부정적인 영향을 주지 않으면서 변경될 수 있는 정도
+2.3.4.2 Extensibility
+시스템에 새로운 기능이 쉽게 추가될 수 있는 정도
+이는 Comopnent간의 결합도를 줄이는 Style을 통해 얻어질 수 있다.
+2.3.4.3 Customizability
+Customizability는 해당 Component의 다른 클라이언트에는 부정적인 영향을 주지 않으면서, 한 클라이언트에 의해 해당 Component가 확장될 수 있을때 얻어짐.
+2.3.4.4 Configurability
+Component와 Coonfiguration이 배포 이후에 수정될 수 있는지의 여부
+2.3.4.5 Reusability
+Component/Connectors/Data Element가 수정없이 재사용 될 수 있는지.
+주된 Mechnism은 Component간의 Coupling을 줄이고, Component Interface를 General하게 유지함으로써 얻어짐
+2.3.5 Visibility
+한 Component가 다른 두 Component간의 Interfaction을 감시(Monitor)하거나, 중재(Mediate)할 수 있을 때 Visible하다고 한다.
+2.3.6 Portability
+소프트웨어가 서로 다른 환경들에서 실행될 수 있을때 Portable하다.
+2.3.7 Reliability
+Component/Connector/Data의 일부 장애상황에서 어느 정도까지 그 장애를 견딜 수 있는지.
+2.4 Summary
+이 장은 논의범위를 네트워크 기반의 어플리케이션 아키텍처로 한정하였고, 어떻게 Style이 그 아키텍처 설계를 Guide할 수 있는지 기술하였다.
+또한, 서로 다른 Style을 비교하고 평가하기 위해서 남은 장들에서 사용될 Set of Architectural Properties를 정의하였다.
+
+3. Network-Based Architectural Styles
